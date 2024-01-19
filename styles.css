@@ -9,10 +9,10 @@
 .div7 { grid-area: 6 / 1 / 7 / 5; } 
 
 .parentBefore .logo_xr{
-    width: 90px;
+    width: 70px;
 }
 .parentAfter .logo_xr{
-    width: 90px;
+    width: 70px;
     position: absolute;
 }
 .div7 a{
@@ -24,11 +24,12 @@
 .parentBefore {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
     height: 160px;
-    width: auto;
+    width: 400px;
     padding: 10px;
     margin: 0 auto;
 
-    border: 2px solid rgb(30,30,30);
+    background: white;
+    border: 1px solid rgb(50,50,50);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -40,11 +41,12 @@
 .parentAfter {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
     height: auto;
-    width: auto;
+    width: 400px;
     padding: 10px;
     margin: 0 auto;
 
-    border: 2px solid rgb(30,30,30);
+    background: white;
+    border: 1px solid rgb(50,50,50);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 0fr);
@@ -54,15 +56,20 @@
 
 .block-input-before{
     display: flex;
-    gap: 50px;
+    gap: 15px;
 }
 .div1 {
-position: relative;
+    position: relative;
+    height: 40px;
 }
 .div1 h3{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif !important;
     font-size: 16px !important;
     text-align: center;
-    font-weight: 900 !important;
+    font-weight: 700 !important;
+}
+.div2{
+    height: 40px;
 }
 .div2 p{
     font-size: 13px;
@@ -81,10 +88,10 @@ position: relative;
     gap: 5px;
 }
 .input-line1 input{
-    width: 190px;
+    width: 150px;
 }
 .input-line2 input{
-    width: 80px;
+    width: 50px;
 }
 .div5{
     margin-top: 10px;
@@ -98,7 +105,7 @@ position: relative;
 .div5 input[type="checkbox"]{
     position: absolute;
     top: 12px;
-    right: 70px;
+    right: 0px;
 }
 .div5 .input-select{
     margin: 5px 0 0 -5px;
@@ -116,21 +123,24 @@ position: relative;
 #playerHeight{
     width: 100px;
     position: absolute;
-    right: 70px;
+    right: 0px;
 }
 #range-value {
     position: absolute;
     top: 18px; 
-    right: 100px;
-    font-weight: 700;
+    right: 30px;
+    font-weight: 600;
     font-size: 12px;
 }
 
 .div6{
     margin-top: 5%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
 }
 .div6 img{
-    height: 180px;
+    height: 160px;
+}
+.div7{
+    margin-top: 5px;
 }
