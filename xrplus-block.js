@@ -22,10 +22,11 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
             },
         },
     },
-    
+    //edit =  ce qui apparait dans l'interface de l'utilisateur/admin pour config 
     edit: function(props){
         console.log("edit ++++++++++++++");
 
+        //function pour modifier la valeur du span du range + enregistrer la valeur selectionnée quand update
         function updateRangeValue(e) {
             const playerHeight = e.target.value;
             document.getElementById('range-value').innerHTML = playerHeight+" px";
@@ -36,6 +37,7 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
 
         }
         
+        //function pour enregistrer la valeur du select selectionnée quand update
         function updateSelectValue(e){
             const startSelect = e.target.value;
             const currentSettings = props.attributes.settings || {};
@@ -43,6 +45,7 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
             props.setAttributes({ settings: newStartSelect });
         }
 
+        //fonction générique pour enregistrer les valeurs des différents paramètre du player
         function updateSetting(property) {
             return function (e) {
                 const value = e.target.checked;
@@ -67,20 +70,9 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
         // Utilisation de la fonction pour mettre à jour la propriété "allow3dComputer"
         const updateAllow3dComputer = updateSetting('allow3dComputer');
 
-        // function updateShadows(e) {
-        //     const shadows = e.target.checked;
-        //     // Assurez-vous que settings est initialisé
-        //     const currentSettings = props.attributes.settings || {};
-        //     // Mettez à jour la propriété shadows dans settings
-        //     const newShadows = { ...currentSettings, shadows };
-        //     // Mettez à jour les attributs avec le nouvel objet settings
-        //     props.setAttributes({ settings: newShadows });
-        //     console.log("shadows: " + newShadows.shadows);
-        // }
-
-
+        //fonction pour remettre les paramettre de settings en valeur  par defaut
+        // Mettez à jour chaque setting avec sa valeur spécifique
         function resetSettings() {
-            // Mettez à jour chaque setting avec sa valeur spécifique
             props.setAttributes({projectName: undefined})
             props.setAttributes({projectCover: undefined})
             props.setAttributes({isProjectValid: undefined})
@@ -97,10 +89,15 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
             });
         }
 
+        // fonction pour enregistrer la valeur du userID dans l'input
         function updateUserID(e) { 
           props.setAttributes({userID: e.target.value}) 
         }
 
+        //fonction pour :
+          //- enregistrer la valeur de l'url du projert dans l'input
+          //- fetch les valeur du userID et de projectURL vers le fichier PHP dans C:\wamp64\www\xr-git.plus\embed\get\project.php
+          //-return l'interface back edit en JSX/REACT
         function updateProjectURL(e) { 
           let url = e.target.value
           let fetchURL = `https://xr.plus/embed/get/project.php?userID=${props.attributes.userID}&projectURL=${url}`;
@@ -145,6 +142,7 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
           }
         }
 
+        //vérifie que le projet existe bien : s'il n'existe pas alors interface de base sinon interface avec projets + settings
         if(!props.attributes.isProjectValid){
 
             return React.createElement(
@@ -385,9 +383,10 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
         }
     },
     
+    // save = ce qui apparait en interface visiteur 
     save: function(props){
-      var aaa = "bbb"
-        // Code HTML et scripts à injecter
+        // Code HTML et scripts injecter via innerHTML 
+        //(voir methode pour nettoyer)
       const embeddedCode = `
         <div id="ARPlayer_${props.attributes.projectURL}"></div>
         <script src="https://xr.plus/embed/xrplusplayer.js"></script>
@@ -406,74 +405,11 @@ wp.blocks.registerBlockType('xrplus/custom-block', {
               `;
               // coverVideoRollOver: ${props.attributes.settings.playCoverVideo}
               
-    return React.createElement('div', {
-        dangerouslySetInnerHTML: { __html: embeddedCode }
-    });
-        
-
-        // const ARPlayer = new XRPlusPlayer({
-        //   project: props.attributes.projectURL,
-        //   id: props.attributes.userID,
-        //   start: props.attributes.settings.startSelect,
-        //   computer3DMode: props.attributes.settings.allow3dComputer,
-        //   height: props.attributes.settings.playerHeight
-        // });
+      return React.createElement('div', {
+          dangerouslySetInnerHTML: { __html: embeddedCode }
+      });
     }
 })
 
 // id : b14016254
 // project url : z2a
-
-
-/**
- * 
- * src: "../wp-content/plugins/xrplus/LogoXR-300x150.png",
- * 
- * edit :
- * <div>	
-  <div>
-    <img className="logo_xr" src="../wp-content/plugins/xrplus/LogoXR-300x150.png" alt="logo xr+" />
-  </div>
-  <h3>{ props.attributes.projectName }</h3>
-  <div>
-    <label>User ID</label> <br/>
-    <input type="text" value={ props.attributes.userID } placeholder="User ID" onChange={updateUserID} />
-  </div>
-  <div>
-    <label>Project URL</label> <br/>
-    <input type="text" value={ props.attributes.projectURL } placeholder="Project URL" onChange={updateProjectURL} />
-  </div>
-  <div>
-  	<img src={ props.attributes.projectCover } alt={ props.attributes.projectName } />
-  </div>
-</div>
- *
-
-
-
- *save : 
- *<div>	
-  <h3>{ props.attributes.userID }</h3>
-  <span>{ props.attributes.projectURL }</span>
-  <div>
-    <h3>{ props.attributes.projectName }</h3>
-  	<img src={ props.attributes.projectCover } alt={ props.attributes.projectName } />
-  </div>
-</div>
- */
-
-
-
-                       
-
-    // // Ici, vous pouvez mettre à jour l'image de manière synchrone
-    // const imgElement = document.createElement("img");
-    // imgElement.src = props.attributes.projectCover;
-    // imgElement.alt = props.attributes.projectName;
-    // imgElement.className = "xrCover";
-
-    // // Remplacez l'ancien contenu par la nouvelle image
-    // const imageContainer = document.getElementById("image-container");
-    // imageContainer.innerHTML = "";
-    // imageContainer.appendChild(imgElement);
-    
