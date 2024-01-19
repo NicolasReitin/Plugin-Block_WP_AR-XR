@@ -1,8 +1,136 @@
-.my-label {
-    color: red;
-    font-weight: bold;
-    font-size: 1.5em;
+/* Commun */
+ 
+.div1 { grid-area: 1 / 1 / 2 / 5; }
+.div2 { grid-area: 2 / 1 / 3 / 5; }
+.div3 { grid-area: 3 / 1 / 4 / 5; }
+.div4 { grid-area: 4 / 1 / 5 / 5; }
+.div5 { grid-area: 5 / 1 / 6 / 3; }
+.div6 { grid-area: 5 / 3 / 6 / 5; }
+.div7 { grid-area: 6 / 1 / 7 / 5; } 
+
+.parentBefore .logo_xr{
+    width: 90px;
 }
-.xrCover{
-    width: 220px;
+.parentAfter .logo_xr{
+    width: 90px;
+    position: absolute;
+}
+.div7 a{
+    font-size: 12px;
+    color: #007cba !important;
+}
+
+/* Before enter URL */
+.parentBefore {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+    height: 160px;
+    width: auto;
+    padding: 10px;
+    margin: 0 auto;
+
+    border: 2px solid rgb(30,30,30);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+}
+
+/* After enter URL */
+.parentAfter {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    margin: 0 auto;
+
+    border: 2px solid rgb(30,30,30);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 0fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+} 
+
+.block-input-before{
+    display: flex;
+    gap: 50px;
+}
+.div1 {
+position: relative;
+}
+.div1 h3{
+    font-size: 16px !important;
+    text-align: center;
+    font-weight: 900 !important;
+}
+.div2 p{
+    font-size: 13px;
+}
+.div3 label{
+    padding-top: 3px;
+    font-size: 13px;
+    font-weight: 700;
+}
+.div3 input[type="text"]{
+    height: 25px !important;
+    min-height: 25px !important;
+}
+.input-line1, .input-line2{
+    display: flex;
+    gap: 5px;
+}
+.input-line1 input{
+    width: 190px;
+}
+.input-line2 input{
+    width: 80px;
+}
+.div5{
+    margin-top: 10px;
+}
+.div5 label{
+    font-size: 12px;
+}
+.div5 .input-checkbox{
+    position: relative;
+}
+.div5 input[type="checkbox"]{
+    position: absolute;
+    top: 12px;
+    right: 70px;
+}
+.div5 .input-select{
+    margin: 5px 0 0 -5px;
+}
+.div5 .input-select select{
+    font-size: 12px;
+    padding: 0 0 0 3px;
+}
+.div5 .input-range{
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    gap: 40px;
+}
+#playerHeight{
+    width: 100px;
+    position: absolute;
+    right: 70px;
+}
+#range-value {
+    position: absolute;
+    top: 18px; 
+    right: 100px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.div6{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+.div6 img{
+    height: 180px;
 }

@@ -6,7 +6,7 @@
  * Requires at least: 6.1
  * Requires PHP:      7.3 +
  * Version:           0.1
- * Author:            Xr+
+ * Author:            Nicolas REITIN
  * Url:       https://xr.plus
  * Text Domain:       xr.plus
  */
